@@ -1,15 +1,81 @@
+<!--<template name="postItem">-->
+  <!--&lt;!&ndash;<div class="post">&ndash;&gt;-->
+  <!--<div class="card">-->
+    <!--<div class="image">-->
+      <!--<img src="http://semantic-ui.com/images/avatar/large/elliot.jpg">-->
+    <!--</div>-->
+    <!--&lt;!&ndash;<div class="ui slide masked reveal image">&ndash;&gt;-->
+      <!--&lt;!&ndash;<img src="http://semantic-ui.com/images/avatar/large/elliot.jpg" class="visible content">&ndash;&gt;-->
+      <!--&lt;!&ndash;<img src="http://semantic-ui.com/images/avatar/large/helen.jpg" class="hidden content">&ndash;&gt;-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--&lt;!&ndash;<a href="#" class="upvote btn btn-default {{upvotedClass}}">⬆</a>&ndash;&gt;-->
+    <!--<div class="content">-->
+      <!--<a class="header">Team Fu &amp; Hess-->
+        <!--&lt;!&ndash;<h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>&ndash;&gt;-->
+      <!--</a>-->
+      <!--<div class="meta">-->
+        <!--<p>-->
+          <!--{{pluralize votes "Vote"}},-->
+          <!--submitted by {{author}},-->
+        <!--</p>-->
+      <!--</div>-->
+      <!--<div class="description">-->
+        <!--<a href="{{pathFor 'postPage'}}">{{pluralize commentsCount "comment"}}</a>-->
+        <!--{{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}-->
+      <!--</div>-->
+      <!--<div class="extra">-->
+        <!--<a>-->
+          <!--<i class="users icon"></i>-->
+          <!--2 Members-->
+        <!--</a>-->
+        <!--<div class="ui star rating" data-rating="3"></div>-->
+      <!--</div>-->
+      <!--<a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</template>-->
+
 <template name="postItem">
-  <div class="post">
-    <a href="#" class="upvote btn btn-default {{upvotedClass}}">⬆</a>
-    <div class="post-content">
-      <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
-      <p>
-        {{pluralize votes "Vote"}},
-        submitted by {{author}},
-        <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount "comment"}}</a>
-        {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}
-      </p>
+  <div class="card">
+    <a class="image">
+      <img src="/images/avatar/large/elliot.jpg">
+    </a>
+    <div class="content">
+      <a class="header">Elliot Fu</a>
+      <div class="meta">
+        <a>Friends</a>
+      </div>
+      <div class="description">
+        Elliot Fu is a film-maker from New York.
+      </div>
     </div>
-    <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a>
+  </div>
+  <div class="card">
+    <a class="image">
+      <img src="/images/avatar/large/helen.jpg">
+    </a>
+    <div class="content">
+      <a class="header">Helen Troy</a>
+      <div class="meta">
+        <a>Friends</a>
+      </div>
+      <div class="description">
+        Helen Troy is an archivist living in New York, who enjoys cooking, fine art, and gardening.
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <a class="image">
+      <img src="/images/avatar/large/jenny.jpg">
+    </a>
+    <div class="content">
+      <a class="header">Jenny Hess</a>
+      <div class="meta">
+        <a>Friends</a>
+      </div>
+      <div class="description">
+        Jenny is a student studying Media Management at the New School.
+      </div>
+    </div>
   </div>
 </template>

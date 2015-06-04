@@ -1,17 +1,106 @@
+<!--<template name="postsList">-->
+  <!--<div class="posts page">-->
+    <!--&lt;!&ndash;<div class="wrapper">&ndash;&gt;-->
+      <!--{{#each posts}}-->
+      <!--<div class="ui cards">-->
+        <!--{{> postItem}}-->
+      <!--</div>-->
+      <!--{{/each}}-->
+    <!--&lt;!&ndash;</div>&ndash;&gt;-->
+    <!--{{#if nextPath}}-->
+      <!--<a class="load-more" href="{{nextPath}}">Load more</a>-->
+    <!--{{else}}-->
+      <!--{{#unless ready}}-->
+        <!--{{> spinner}}-->
+      <!--{{/unless}}-->
+    <!--{{/if}}-->
+  <!--</div>-->
+<!--</template>-->
+
 <template name="postsList">
-  <div class="posts page">
-    <div class="wrapper">
-      {{#each posts}}
-        {{> postItem}}
-      {{/each}}
+  <div class="page ui four doubling cards">
+    <div class="ui card" href="http://www.google.com">
+      <div class="image">
+        <img src="/img/empty_bg.jpg">
+      </div>
+      <div class="content">
+        <a class="header">Elliot Fu</a>
+        <div class="meta">
+          <span class="category">Animals</span>
+          <span class="category">Animals</span>
+          <span class="category">Animals</span>
+        </div>
+        <div class="description">
+          <p>Cute dogs come in a variety of shapes and sizes. Some cute dogs are cute for their adorable faces, others for their tiny stature, and even others for their massive size.</p>
+          <p>Many people also have their own barometers for what makes a cute dog.</p>
+        </div>
+      </div>
+      <div class="extra content">
+         <span class="left">
+            <i class="comment icon"></i>
+            35 Comments
+        </span>
+        <span class="right floated star">
+          <i class="star icon"></i>
+          Favorite
+        </span>
+      </div>
     </div>
-    
-    {{#if nextPath}}
-      <a class="load-more" href="{{nextPath}}">Load more</a>
-    {{else}}
-      {{#unless ready}}
-        {{> spinner}}
-      {{/unless}}
-    {{/if}}
+    <div class="card">
+      <div class="image">
+        <img src="/img/empty_bg.jpg">
+      </div>
+      <div class="content">
+        <a class="header">Helen Troy</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="image">
+        <img src="/img/empty_bg.jpg">
+      </div>
+      <div class="content">
+        <a class="header">Jenny Hess</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="image">
+        <img src="/img/empty_bg.jpg">
+      </div>
+      <div class="content">
+        <a class="header">Veronika Ossi</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="image">
+        <img src="/img/empty_bg.jpg">
+      </div>
+      <div class="content">
+        <a class="header">Stevie</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="image">
+        <img src="http://semantic-ui.com/images/avatar/large/elliot.jpg">
+      </div>
+      <div class="content">
+        <a class="header">Steve Jobes</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="image">
+        <img src="http://semantic-ui.com/images/avatar/large/elliot.jpg">
+      </div>
+      <div class="content">
+        <a class="header">Stevie</a>
+      </div>
+    </div>
+    <div class="card">
+      <div class="image">
+        <img src="http://semantic-ui.com/images/avatar/large/elliot.jpg">
+      </div>
+      <div class="content">
+        <a class="header">Steve Jobes</a>
+      </div>
+    </div>
   </div>
 </template>
