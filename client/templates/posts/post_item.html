@@ -1,81 +1,45 @@
-<!--<template name="postItem">-->
-  <!--&lt;!&ndash;<div class="post">&ndash;&gt;-->
-  <!--<div class="card">-->
-    <!--<div class="image">-->
-      <!--<img src="http://semantic-ui.com/images/avatar/large/elliot.jpg">-->
-    <!--</div>-->
-    <!--&lt;!&ndash;<div class="ui slide masked reveal image">&ndash;&gt;-->
-      <!--&lt;!&ndash;<img src="http://semantic-ui.com/images/avatar/large/elliot.jpg" class="visible content">&ndash;&gt;-->
-      <!--&lt;!&ndash;<img src="http://semantic-ui.com/images/avatar/large/helen.jpg" class="hidden content">&ndash;&gt;-->
-    <!--&lt;!&ndash;</div>&ndash;&gt;-->
-    <!--&lt;!&ndash;<a href="#" class="upvote btn btn-default {{upvotedClass}}">⬆</a>&ndash;&gt;-->
-    <!--<div class="content">-->
-      <!--<a class="header">Team Fu &amp; Hess-->
-        <!--&lt;!&ndash;<h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>&ndash;&gt;-->
-      <!--</a>-->
-      <!--<div class="meta">-->
-        <!--<p>-->
-          <!--{{pluralize votes "Vote"}},-->
-          <!--submitted by {{author}},-->
-        <!--</p>-->
-      <!--</div>-->
-      <!--<div class="description">-->
-        <!--<a href="{{pathFor 'postPage'}}">{{pluralize commentsCount "comment"}}</a>-->
-        <!--{{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}-->
-      <!--</div>-->
-      <!--<div class="extra">-->
-        <!--<a>-->
-          <!--<i class="users icon"></i>-->
-          <!--2 Members-->
-        <!--</a>-->
-        <!--<div class="ui star rating" data-rating="3"></div>-->
-      <!--</div>-->
-      <!--<a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</template>-->
-
 <template name="postItem">
-  <div class="card">
-    <a class="image">
-      <img src="/images/avatar/large/elliot.jpg">
-    </a>
-    <div class="content">
-      <a class="header">Elliot Fu</a>
-      <div class="meta">
-        <a>Friends</a>
-      </div>
-      <div class="description">
-        Elliot Fu is a film-maker from New York.
-      </div>
+
+  <iframe src="http://s3.amazonaws.com/uploads.knightlab.com/storymapjs/6f5d610d20e507871d936152c7c86a44/still-hungry/index.html" frameborder="0" width="100%" height="800"></iframe>
+  <div id="container" class="view_map">
+    <div id="mapWrapper" style="width:100%;height:300px;position:relative;">
+        <div id="map" style="width:100%;height:100%"></div> <!-- 지도를 표시할 div 입니다 -->
+        <input type="button" id="btnRoadview" onclick="toggleMap(false)" title="로드뷰 보기" value="로드뷰">
+    </div>
+    <div id="rvWrapper" style="width:100%;height:300px;position:absolute;top:0;left:0;">
+        <div id="roadview" style="height:100%"></div> <!-- 로드뷰를 표시할 div 입니다 -->
+        <input type="button" id="btnMap" onclick="toggleMap(true)" title="지도 보기" value="지도">
     </div>
   </div>
-  <div class="card">
-    <a class="image">
-      <img src="/images/avatar/large/helen.jpg">
+  <!-- 
+  <div class="ui card">
+    <a class="image" href="{{pathFor 'postPage'}}">
+      {{#if imageUrl}}
+        <img src="{{imageUrl}}">
+        {{else}}
+        <img src="/img/empty_bg.jpg">
+      {{/if}}
     </a>
     <div class="content">
-      <a class="header">Helen Troy</a>
+      <a class="header" href="{{pathFor 'postPage'}}">{{title}}</a>
       <div class="meta">
-        <a>Friends</a>
+        <span class="category">{{location.city}} {{location.division}} {{location.address}}</span>
       </div>
       <div class="description">
-        Helen Troy is an archivist living in New York, who enjoys cooking, fine art, and gardening.
+        <p>{{description}}</p>
       </div>
     </div>
-  </div>
-  <div class="card">
-    <a class="image">
-      <img src="/images/avatar/large/jenny.jpg">
-    </a>
-    <div class="content">
-      <a class="header">Jenny Hess</a>
-      <div class="meta">
-        <a>Friends</a>
-      </div>
-      <div class="description">
-        Jenny is a student studying Media Management at the New School.
-      </div>
+    <div class="extra content">
+       <span class="left">
+          <i class="comments icon">{{commentsCount}} 건</i>
+      </span>
+      &nbsp;&nbsp;
+      <span class="left floated"><i class="thumbs outline up icon"></i> {{upvotesCount}} 명
+      </span>
+      <span class="right floated">
+        <i class="star icon"></i>즐겨찾기
+      </span>
     </div>
-  </div>
+  </div> -->
+  
 </template>

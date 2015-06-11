@@ -16,3 +16,7 @@ msavin:mongol
 semantic:ui
 flemay:less-autoprefixer
 semantic:ui-css
+materialize:materialize
+harrison:babyparse
+manuelschoebel:wait-on-lib
+http

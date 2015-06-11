@@ -7,19 +7,25 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="{{pathFor 'home'}}">Microscope</a>
+      <a class="navbar-brand" href="{{pathFor 'home'}}">걸신이라 불러다오</a>
     </div>
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="nav navbar-nav">
-        <li class="{{activeRouteClass 'home' 'newPosts'}}">
-          <a href="{{pathFor 'newPosts'}}">New</a>
+        <li class="{{activeRouteClass  'chart'}}">
+          <a href="{{pathFor 'chart'}}">걸신 차트</a>
+        </li>        
+        <li class="{{activeRouteClass 'newPosts'}}">
+          <a href="{{pathFor 'newPosts'}}">최신순</a>
         </li>
         <li class="{{activeRouteClass  'bestPosts'}}">
-          <a href="{{pathFor 'bestPosts'}}">Best</a>
+          <a href="{{pathFor 'bestPosts'}}">인기순</a>
+        </li>
+        <li class="{{activeRouteClass  'favoritePosts'}}">
+          <a href="{{pathFor 'favoritePosts'}}">즐겨찾기</a>
         </li>
         {{#if currentUser}}
           <li class="{{activeRouteClass 'postSubmit'}}">
-            <a href="{{pathFor 'postSubmit'}}">Submit Post</a>
+            <a href="{{pathFor 'postSubmit'}}">맛집 등록</a>
           </li>
           <li class="dropdown">
             {{> notifications}}
