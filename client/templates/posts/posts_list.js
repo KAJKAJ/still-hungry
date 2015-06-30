@@ -1,3 +1,4 @@
+
 Template.postsList.onRendered(function () {
   this.find('.wrapper')._uihooks = {
     insertElement: function (node, next) {
@@ -44,6 +45,29 @@ Template.postsList.onRendered(function () {
       $(node).fadeOut(function() {
         $(this).remove();
       });
+    }
+  }
+});
+
+Template.postItemForList.helpers({
+  likeOrNot: function() {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.likeusers, userId)) {
+      return '좋아요';
+    } else {
+      return '좋아요 취소';
+    }
+  }
+});
+
+Template.postItemForList.events({
+  'click #like_it': function(e) {
+    e.preventDefault();
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.likeusers, userId)) {
+      return Meteor.call('like', this._id);
+    } else {
+      return Meteor.call('dislike', this._id);
     }
   }
 });

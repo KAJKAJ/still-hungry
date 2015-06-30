@@ -35,7 +35,8 @@ if (Posts.find().count() === 0) {
       description: element[9],
       submitted: new Date(now - 7 * 3600 * 1000),
       commentsCount: 0,
-      upvoters: [], votes: 0
+      upvoters: [], votes: 0,
+      likeusers: [], likes:0
     };
 
     var requestURI = 'https://apis.daum.net/local/v1/search/keyword.json';

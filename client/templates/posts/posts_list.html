@@ -33,15 +33,20 @@
       </div>
     </div>
     <div class="extra content">
-       <span class="left">
-          <i class="comments icon">{{commentsCount}} 건</i>
-      </span>
-      &nbsp;&nbsp;
-      <span class="left floated"><i class="thumbs outline up icon"></i> {{upvotesCount}} 명
-      </span>
-      <span class="right floated">
-        <i class="star icon"></i>즐겨찾기
-      </span>
+      <div class="flex-container" style="font-size:0.9em;">
+        <div class="flex-1">
+          <a id="like_it" href="#">{{likeOrNot}}&nbsp;</a>
+        </div>        
+        <div class="flex-1">
+          <a href="{{pathFor 'postPage'}}">댓글 달기&nbsp;</a>
+        </div>
+        <div class="flex-1">
+          <a href="#">
+            <i class="comment outline icon"></i>{{commentsCount}}&nbsp;
+            <i class="thumbs outline up icon"></i>{{likes}}
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 </template>

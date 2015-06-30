@@ -20,10 +20,10 @@
         <li class="{{activeRouteClass  'bestPosts'}}">
           <a href="{{pathFor 'bestPosts'}}">인기순</a>
         </li>
-        <li class="{{activeRouteClass  'favoritePosts'}}">
-          <a href="{{pathFor 'favoritePosts'}}">즐겨찾기</a>
-        </li>
         {{#if currentUser}}
+          <li class="{{activeRouteClass  'favoritePosts'}}">
+            <a href="{{pathFor 'favoritePosts'}}">즐겨찾기</a>
+          </li>
           <li class="{{activeRouteClass 'postSubmit'}}">
             <a href="{{pathFor 'postSubmit'}}">맛집 등록</a>
           </li>

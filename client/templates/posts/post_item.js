@@ -11,9 +11,9 @@ Template.postItem.helpers({
   upvotedClass: function() {
     var userId = Meteor.userId();
     if (userId && !_.include(this.upvoters, userId)) {
-      return 'btn-primary upvotable';
+      return 'thumbs outline up icon';
     } else {
-      return 'disabled';
+      return 'thumbs up icon';
     }
   }
 });
@@ -30,13 +30,37 @@ Template.postItem.events({
   }
 });
 
+Template.postItem.helpers({
+  likeOrNot: function() {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.likeusers, userId)) {
+      return '좋아요';
+    } else {
+      return '좋아요 취소';
+    }
+  }
+});
+
+Template.postItem.events({
+  'click #like_it': function(e) {
+    e.preventDefault();
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.likeusers, userId)) {
+      return Meteor.call('like', this._id);
+    } else {
+      return Meteor.call('dislike', this._id);
+    }
+  }
+});
+
+
 Template.postItem.rendered = function() {
 
-  // if (!this.rendered){
+  if (!this.rendered){
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
-        center: new daum.maps.LatLng(this.data.location.latitude, this.data.location.longitude), // 지도의 중심좌표
-        // center: new daum.maps.LatLng("37.69600304694161", "128.8919231052503"),
+        // center: new daum.maps.LatLng(this.data.location.latitude, this.data.location.longitude), // 지도의 중심좌표
+        center: new daum.maps.LatLng("37.69600304694161", "128.8919231052503"),
         level: 3 // 지도의 확대 레벨
     };
 
@@ -51,5 +75,5 @@ Template.postItem.rendered = function() {
     // 지도에 마커를 표시합니다
     marker.setMap(map);
     // this.rendered = true;
-  // }
+  }
 }
