@@ -1,16 +1,20 @@
 Meteor.publish('posts', function(options) {
-  check(options, {
-    sort: Object,
-    limit: Number
-  });
-  return Posts.find({}, options);
+  // check(options, {
+  //   likeusers: Object,
+  //   sort: Object,
+  //   limit: Number
+  // });
+  if (options.likeusers != undefined ) {
+    return Posts.find({likeusers: options.likeusers}, options);
+  } else {
+    return Posts.find({}, options);    
+  }
 });
 
 Meteor.publish('singlePost', function(id) {
   check(id, String);
   return Posts.find(id);
 });
-
 
 Meteor.publish('comments', function(postId) {
   check(postId, String);
@@ -20,3 +24,4 @@ Meteor.publish('comments', function(postId) {
 Meteor.publish('notifications', function() {
   return Notifications.find({userId: this.userId, read: false});
 });
+
