@@ -1,15 +1,43 @@
 <template name="postItem">
-  <div class="post">
-    <a href="#" class="upvote btn btn-default {{upvotedClass}}">⬆</a>
-    <div class="post-content">
-      <h3><a href="{{url}}">{{title}}</a><span>{{domain}}</span></h3>
-      <p>
-        {{pluralize votes "Vote"}},
-        submitted by {{author}},
-        <a href="{{pathFor 'postPage'}}">{{pluralize commentsCount "comment"}}</a>
-        {{#if ownPost}}<a href="{{pathFor 'postEdit'}}">Edit</a>{{/if}}
-      </p>
+  <div class="flex-container">
+    <div class="ui card flex-1">
+      <a class="image" href="{{pathFor 'postPage'}}">
+        {{#if imageUrl}}
+          <img src="{{imageUrl}}">
+          {{else}}
+          <img src="/img/empty_bg.jpg">
+        {{/if}}
+      </a>
+      <div class="content">
+        <a class="header" href="{{pathFor 'postPage'}}">{{title}}</a>
+        <span class="category">{{tel}}</span>
+        <div class="meta">
+          <span class="category">{{location.city}} {{location.division}} {{location.address}}</span>
+        </div>
+        <div class="description">
+          <p>{{description}}</p>
+        </div>
+      </div>
+      <div class="extra content">
+        <div class="flex-container" style="font-size:0.9em;">
+          <div class="flex-1">
+            <a id="like_it" href="#">{{likeOrNot}}&nbsp;</a>
+          </div>        
+          <div class="flex-1">
+            <a href="{{pathFor 'postPage'}}">댓글 달기&nbsp;</a>
+          </div>
+          <div class="flex-1">
+            <a href="#">
+              <i class="comment outline icon"></i>{{commentsCount}}&nbsp;
+              <i class="thumbs outline up icon"></i>{{likes}}
+            </a>
+          </div>
+        </div>
+      </div>
     </div>
-    <a href="{{pathFor 'postPage'}}" class="discuss btn btn-default">Discuss</a>
+    <div id="map" class="ui flex-2">
+    </div>
   </div>
 </template>
+
+

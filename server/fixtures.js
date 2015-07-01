@@ -1,72 +1,62 @@
 // Fixture data 
 if (Posts.find().count() === 0) {
   var now = new Date().getTime();
-  
-  // create two users
-  var tomId = Meteor.users.insert({
-    profile: { name: 'Tom Coleman' }
+  var rawCSV = Assets.getText('fixture/sheet1.csv');
+  var rowsParsed = Baby.parse(rawCSV);
+  var rows = rowsParsed.data;
+
+    var adminId = Meteor.users.insert({
+    profile: {name: 'youngmin'}
   });
-  var tom = Meteor.users.findOne(tomId);
-  var sachaId = Meteor.users.insert({
-    profile: { name: 'Sacha Greif' }
-  });
-  var sacha = Meteor.users.findOne(sachaId);
-  
-  var telescopeId = Posts.insert({
-    title: 'Introducing Telescope',
-    userId: sacha._id,
-    author: sacha.profile.name,
-    url: 'http://sachagreif.com/introducing-telescope/',
-    submitted: new Date(now - 7 * 3600 * 1000),
-    commentsCount: 2,
-    upvoters: [], votes: 0
-  });
-  
-  Comments.insert({
-    postId: telescopeId,
-    userId: tom._id,
-    author: tom.profile.name,
-    submitted: new Date(now - 5 * 3600 * 1000),
-    body: 'Interesting project Sacha, can I get involved?'
-  });
-  
-  Comments.insert({
-    postId: telescopeId,
-    userId: sacha._id,
-    author: sacha.profile.name,
-    submitted: new Date(now - 3 * 3600 * 1000),
-    body: 'You sure can Tom!'
-  });
-  
-  Posts.insert({
-    title: 'Meteor',
-    userId: tom._id,
-    author: tom.profile.name,
-    url: 'http://meteor.com',
-    submitted: new Date(now - 10 * 3600 * 1000),
-    commentsCount: 0,
-    upvoters: [], votes: 0
-  });
-  
-  Posts.insert({
-    title: 'The Meteor Book',
-    userId: tom._id,
-    author: tom.profile.name,
-    url: 'http://themeteorbook.com',
-    submitted: new Date(now - 12 * 3600 * 1000),
-    commentsCount: 0,
-    upvoters: [], votes: 0
-  });
-  
-  for (var i = 0; i < 10; i++) {
-    Posts.insert({
-      title: 'Test post #' + i,
-      author: sacha.profile.name,
-      userId: sacha._id,
-      url: 'http://google.com/?q=test-' + i,
-      submitted: new Date(now - i * 3600 * 1000 + 1),
+
+  var admin = Meteor.users.findOne(adminId);
+
+  for(var i=1; i < rows.length; i++ ){
+    var element = rows[i];
+
+    var restaurant = {
+      imageUrl: '',
+      userId: admin._id,
+      author: admin.profile.name,
+      episode: element[0],
+      part: element[1],
+      title: element[2],
+      dish: element[3],
+      season: element[4],
+      location: {
+        city: element[5],
+        division: element[6],
+        address: element[7],
+        longtitude: 0,
+        latitude: 0
+      },
+      url: '',
+      tel: element[8],
+      description: element[9],
+      submitted: new Date(now - 7 * 3600 * 1000),
       commentsCount: 0,
-      upvoters: [], votes: 0
-    });
+      upvoters: [], votes: 0,
+      likeusers: [], likes:0
+    };
+
+    var requestURI = 'https://apis.daum.net/local/v1/search/keyword.json';
+    var query = restaurant.tel? restaurant.tel 
+                    : (restaurant.location.city + ' ' + restaurant.location.division + ' ' + restaurant.location.address);
+    // HTTP.call('GET', requestURI, 
+    //     {params: { apikey: 'f836162338ea24d0e221975199009a2d', query : query } }
+    //     , function(error, result) {
+    //     if (!error) {
+    //       var object = JSON.parse(result.content);
+    //       restaurant.imageUrl = object.channel.item[0]?  object.channel.item[0].imageUrl: '';
+    //       restaurant.location.longitude = object.channel.item[0]? object.channel.item[0].longitude: '';
+    //       restaurant.location.latitude = object.channel.item[0]? object.channel.item[0].latitude: '';
+
+    //     } else {
+    //       console.log(error);
+    //     }
+    //     Posts.insert(restaurant);
+    //   }
+    // );
+    Posts.insert(restaurant);
   }
 }
