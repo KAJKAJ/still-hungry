@@ -1,5 +1,6 @@
 <template name="postsList">
-  <div class="page ui four doubling cards">
+  {{> search}}
+  <div class="ui four doubling cards">
 		{{#each posts}}
   		{{> postItemForList}}
 		{{/each}}
@@ -11,6 +12,25 @@
       {{/unless}}
     {{/if}}
   </div>
+</template>
+
+<template name="search">
+    {{> esInput index="posts" placeholder="Search..." }}
+    <div class="ui four doubling cards">
+    {{#esEach index="posts"}}
+      {{> postItemForList}}
+    {{/esEach}}
+    </div>
+
+    {{> esLoadMoreButton index="posts"}}
+
+    {{#ifEsHasNoResults index="posts"}}
+      <div class="no-results">No results found!</div>
+    {{/ifEsHasNoResults}}
+
+    {{#ifEsIsSearching index="posts"}}
+      {{> spinner}}
+    {{/ifEsIsSearching}}
 </template>
 
 <template name="postItemForList">
