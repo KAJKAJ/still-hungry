@@ -33,7 +33,7 @@
 
   <!-- {{> esLoadMoreButton class="fluid ui button" index="posts"}} -->
   <div class="search-controls">
-    {{> esPagination id="main" renderContro="pagingTemplate" index="posts"}}
+    {{> esPagination id="main" index="posts"}}
   </div>
 
   {{#ifEsHasNoResults id="main" index="posts"}}
@@ -83,8 +83,3 @@
   </div>
 </template>
 
-<template name="pagingTemplate">
-  <div>
-    하하하
-  </div>
-</template>
