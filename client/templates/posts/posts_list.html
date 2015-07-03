@@ -19,25 +19,28 @@
 
   <div class="ui search">
     <div class="ui icon input">
-      {{> esInput index="posts" class="prompt" placeholder="Search..." }}
+      {{> esInput id="main" index="posts" class="prompt" placeholder="검색어를 입력하세요..." }}
       <i class="search icon"></i>
     </div>
   </div>
 
   <!-- results -->
   <div class="ui four doubling cards">
-    {{#esEach index="posts"}}
+    {{#esEach id="main" index="posts"}}
       {{> postItemForList}}
     {{/esEach}}
   </div>
 
-  {{> esLoadMoreButton class="fluid ui button" index="posts"}}
+  <!-- {{> esLoadMoreButton class="fluid ui button" index="posts"}} -->
+  <div class="search-controls">
+    {{> esPagination id="main" renderContro="pagingTemplate" index="posts"}}
+  </div>
 
-  {{#ifEsHasNoResults index="posts"}}
-    <div class="no-results">No results found!</div>
+  {{#ifEsHasNoResults id="main" index="posts"}}
+    <div class="no-results">검색 결과가 없습니다</div>
   {{/ifEsHasNoResults}}
 
-  {{#ifEsIsSearching index="posts"}}
+  {{#ifEsIsSearching id="main" index="posts"}}
     {{> spinner}}
   {{/ifEsIsSearching}}
 </template>
@@ -77,5 +80,11 @@
         </div>
       </div>
     </div>
+  </div>
+</template>
+
+<template name="pagingTemplate">
+  <div>
+    하하하
   </div>
 </template>
