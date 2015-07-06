@@ -1,6 +1,5 @@
 <template name="postsList">
-  {{> search}}
-  <!-- <div class="ui four doubling cards">
+  <div class="page ui five doubling cards">
 		{{#each posts}}
   		{{> postItemForList}}
 		{{/each}}
@@ -11,42 +10,11 @@
         {{> spinner}}
       {{/unless}}
     {{/if}}
-  </div> -->
-</template>
-
-<template name="search">
-  <!-- {{> esInput index="posts" placeholder="Search..." }} -->
-
-  <div class="ui search">
-    <div class="ui icon input">
-      {{> esInput id="main" index="posts" class="prompt" placeholder="검색어를 입력하세요..." }}
-      <i class="search icon"></i>
-    </div>
   </div>
-
-  <!-- results -->
-  <div class="ui four doubling cards">
-    {{#esEach id="main" index="posts"}}
-      {{> postItemForList}}
-    {{/esEach}}
-  </div>
-
-  <!-- {{> esLoadMoreButton class="fluid ui button" index="posts"}} -->
-  <div class="search-controls">
-    {{> esPagination id="main" index="posts"}}
-  </div>
-
-  {{#ifEsHasNoResults id="main" index="posts"}}
-    <div class="no-results">검색 결과가 없습니다</div>
-  {{/ifEsHasNoResults}}
-
-  {{#ifEsIsSearching id="main" index="posts"}}
-    {{> spinner}}
-  {{/ifEsIsSearching}}
 </template>
 
 <template name="postItemForList">
-  <div class="ui card">
+  <div class="card">
     <a class="image" href="{{pathFor 'postPage'}}">
       {{#if imageUrl}}
         <img src="{{imageUrl}}">

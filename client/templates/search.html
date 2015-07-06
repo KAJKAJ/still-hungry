@@ -1,0 +1,34 @@
+<template name="searchbar">
+  <!-- {{> esInput index="posts" placeholder="Search..." }} -->
+
+  <div class="ui search">
+    <div class="ui icon input">
+      {{> esInput id="main" index="search_posts" class="prompt" placeholder="검색어를 입력하세요..." }}
+      <i class="search icon"></i>
+    </div>
+  </div>
+
+  <!-- results -->
+  <div class="ui five doubling cards">
+    {{#esEach id="main" index="search_posts"}}
+      {{> postItemForList}}
+    {{/esEach}}
+  </div>
+
+  <div class="search-controls">
+    {{> esLoadMoreButton id="main" class="fluid ui button" index="search_posts"}}
+  </div>
+
+<!--   <div class="search-controls">
+    {{> esPagination id="main" index="search_posts"}}
+  </div>
+ -->
+
+  {{#ifEsHasNoResults id="main" index="search_posts"}}
+    <div class="no-results">검색 결과가 없습니다</div>
+  {{/ifEsHasNoResults}}
+
+  {{#ifEsIsSearching id="main" index="search_posts"}}
+    {{> spinner}}
+  {{/ifEsIsSearching}}
+</template>
