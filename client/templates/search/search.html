@@ -5,14 +5,16 @@
 </template>
 
 <template name="search">
-  <div class="ui search">
-    <div class="ui icon input">
-      {{> esInput id="main" index="search_posts" class="prompt searchInput" placeholder="검색어를 입력하세요..." }}
+  <div class="ui search flex-container">
+    <div class="flex-1"></div>
+    <div class="ui icon input flex-8">
+      {{> esInput id="main" index="search_posts" class="prompt searchInput" placeholder="식당, 메뉴, 지역..." }}
       <i class="search icon"></i>
     </div>
+    <div class="flex-1"></div>
   </div>
-
-  <!-- results -->
+  <br>
+    <!-- results -->
   <div class="ui five doubling cards">
     {{#esEach id="main" index="search_posts"}}
       {{> postItemForList}}
