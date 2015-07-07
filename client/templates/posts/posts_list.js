@@ -69,5 +69,12 @@ Template.postItemForList.events({
     } else {
       return Meteor.call('dislike', this._id);
     }
+  },
+  'mouseover #require_login': function(e) {
+    $('.example .teal.button')
+    .popup({
+      on: 'click'
+    })
   }
 });
+

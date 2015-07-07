@@ -35,16 +35,22 @@
     <div class="extra content">
       <div class="flex-container" style="font-size:0.9em;">
         <div class="flex-1">
-          <a id="like_it" href="#">{{likeOrNot}}&nbsp;</a>
+          {{#if currentUser}}
+            <a id="like_it" href="#">{{likeOrNot}}&nbsp;</a>
+          {{else}}
+            <span id="require_login" data-content="The default theme's basic popup removes the pointing arrow." data-variation="basic">좋아요&nbsp;</span>
+          {{/if}}
         </div>        
         <div class="flex-1">
-          <a href="{{pathFor 'postPage'}}">댓글 달기&nbsp;</a>
+          {{#if currentUser}}
+            <a href="{{pathFor 'postPage'}}">댓글 달기&nbsp;</a>
+          {{else}}
+            <span id="require_login">댓글 달기&nbsp;</span>
+          {{/if}}
         </div>
         <div class="flex-1">
-          <a href="#">
-            <i class="comment outline icon"></i>{{commentsCount}}&nbsp;
-            <i class="thumbs outline up icon"></i>{{likes}}
-          </a>
+          <i class="comment outline icon"></i>{{commentsCount}}&nbsp;
+          <i class="thumbs outline up icon"></i>{{likes}}
         </div>
       </div>
     </div>

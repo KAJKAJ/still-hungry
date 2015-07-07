@@ -11,9 +11,9 @@
     </div>
     <div class="collapse navbar-collapse" id="navigation">
       <ul class="nav navbar-nav">
-        <li class="{{activeRouteClass  'chart'}}">
+      <!--   <li class="{{activeRouteClass  'chart'}}">
           <a href="{{pathFor 'chart'}}">걸신 차트</a>
-        </li>        
+        </li>         -->
         <li class="{{activeRouteClass 'newPosts'}}">
           <a href="{{pathFor 'newPosts'}}">최신순</a>
         </li>
@@ -22,7 +22,7 @@
         </li>
         {{#if currentUser}}
           <li class="{{activeRouteClass  'favoritePosts'}}">
-            <a href="{{pathFor 'favoritePosts'}}">즐겨찾기</a>
+            <a href="{{pathFor 'favoritePosts'}}">나의 좋아요</a>
           </li>
           <li class="{{activeRouteClass 'postSubmit'}}">
             <a href="{{pathFor 'postSubmit'}}">맛집 등록</a>
@@ -30,6 +30,9 @@
           <li class="dropdown">
             {{> notifications}}
           </li>
+          <li>
+            {{> searchbar}}
+          </li>          
         {{/if}}
       </ul>
       <ul class="nav navbar-nav navbar-right">

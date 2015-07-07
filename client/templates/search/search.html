@@ -1,9 +1,13 @@
 <template name="searchbar">
-  <!-- {{> esInput index="posts" placeholder="Search..." }} -->
+    <a href="{{pathFor 'search'}}">
+      <i class="search icon"></i>검색
+    </a>
+</template>
 
+<template name="search">
   <div class="ui search">
     <div class="ui icon input">
-      {{> esInput id="main" index="search_posts" class="prompt" placeholder="검색어를 입력하세요..." }}
+      {{> esInput id="main" index="search_posts" class="prompt searchInput" placeholder="검색어를 입력하세요..." }}
       <i class="search icon"></i>
     </div>
   </div>
@@ -19,10 +23,11 @@
     {{> esLoadMoreButton id="main" class="fluid ui button" index="search_posts"}}
   </div>
 
-<!--   <div class="search-controls">
+  <!-- 
+  <div class="search-controls">
     {{> esPagination id="main" index="search_posts"}}
-  </div>
- -->
+  </div> 
+  -->
 
   {{#ifEsHasNoResults id="main" index="search_posts"}}
     <div class="no-results">검색 결과가 없습니다</div>
