@@ -1,5 +1,5 @@
 <template name="postsList">
-  <div class="page ui five doubling cards">
+  <div class="page ui three doubling cards">
 		{{#each posts}}
   		{{> postItemForList}}
 		{{/each}}
@@ -16,11 +16,7 @@
 <template name="postItemForList">
   <div class="card">
     <a class="image" href="{{pathFor 'postPage'}}">
-      {{#if imageUrl}}
-        <img src="{{imageUrl}}">
-        {{else}}
-        <img src="/img/empty_bg.jpg">
-      {{/if}}
+      <img src="{{imageFirst}}">
     </a>
     <div class="content">
       <a class="header" href="{{pathFor 'postPage'}}">{{title}}</a>
@@ -28,9 +24,7 @@
       <div class="meta">
         <span class="category">{{location.city}} {{location.division}} {{location.address}}</span>
       </div>
-      <div class="description">
-        <p>{{description}}</p>
-      </div>
+
     </div>
     <div class="extra content">
       <div class="flex-container" style="font-size:0.9em;">

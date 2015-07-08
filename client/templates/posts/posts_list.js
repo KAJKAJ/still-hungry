@@ -57,6 +57,13 @@ Template.postItemForList.helpers({
     } else {
       return '좋아요 취소';
     }
+  },
+  imageFirst: function() {
+    if (this.imageUrl.length > 0) { 
+      return this.imageUrl[0];
+    } else {
+      return '/img/empty_bg.jpg';
+    }
   }
 });
 
