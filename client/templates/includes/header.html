@@ -40,8 +40,6 @@
       <!--</ul>-->
     <!--</div>-->
   <!--</nav>-->
-
-
         <div></div>
 
         <div class="ui secondary pointing menu">
@@ -51,16 +49,21 @@
             <a class="item {{activeRouteClass  'favoritePosts'}}" href="{{pathFor 'favoritePosts'}}">먹어봤어요</a>
 
             <div class="right menu">
-                <div class="item">
-                    <div class="ui transparent icon input">
-                        <input type="text" placeholder="검색..">
-                        <i class="search link icon"></i>
-                        <!--{{> searchbar}}-->
-                    </div>
+              <div class="item">
+                <div class="dropdown">
+                  {{> notifications}}
                 </div>
-                <div class="item">
-                    {{> loginButtons}}
+              </div>
+              <div class="item">
+                <div class="ui transparent icon input">
+                    <input type="text" placeholder="검색..">
+                    <i class="search link icon"></i>
+                    <!--{{> searchbar}}-->
                 </div>
+              </div>
+              <div class="item">
+                  {{> loginButtons}}
+              </div>
             </div>
         </div>
 
