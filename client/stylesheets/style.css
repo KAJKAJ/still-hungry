@@ -166,6 +166,11 @@ body {
   justify-content: space-between;
 }
 
+.flex-container-vertical {
+  display: flex;
+  flex-direction: column;
+}
+
 .flex-1 {
   flex: 1;
 }
@@ -180,4 +185,10 @@ body {
 
 .text-center{
   text-align: center;
+}
+
+#owl-demo .item img{
+    display: block;
+    width: 100%;
+    height: 450px;
 }
