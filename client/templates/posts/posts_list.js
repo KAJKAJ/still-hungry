@@ -53,9 +53,17 @@ Template.postItemForList.helpers({
   likeOrNot: function() {
     var userId = Meteor.userId();
     if (userId && !_.include(this.likeusers, userId)) {
-      return '좋아요';
+      return '먹어봤어요';
     } else {
-      return '좋아요 취소';
+      return '먹어봤어요 취소';
+    }
+  },
+  color: function() {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.likeusers, userId)) {
+      return 'teal';
+    } else {
+      return 'grey';
     }
   },
   imageFirst: function() {

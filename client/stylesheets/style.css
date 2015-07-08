@@ -30,7 +30,9 @@ body {
   height: 300px; }
 
 .post {
-  /* For modern browsers */
+  /* For modern browsers
+
+   */
   /* For IE 6/7 (trigger hasLayout) */
   *zoom: 1;
   position: relative;
@@ -172,16 +174,6 @@ body {
   flex: 2;
 }
 
-/* Pagination */
-ul.es-pagination {
-  margin: 20px 0px 20px 0px;
-  text-align: center;
-}
-
-ul.es-pagination > li.control.active{
-  cursor: pointer;
-}
-
-ul.es-pagination > li.control.selected{
-  color:blue;
+.image-modified {
+  max-height: 300px;
 }

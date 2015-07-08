@@ -15,7 +15,7 @@
 
 <template name="postItemForList">
   <div class="card">
-    <a class="image" href="{{pathFor 'postPage'}}">
+    <a class="image image-modified" href="{{pathFor 'postPage'}}">
       <img src="{{imageFirst}}">
     </a>
     <div class="content">
@@ -24,29 +24,26 @@
       <div class="meta">
         <span class="category">{{location.city}} {{location.division}} {{location.address}}</span>
       </div>
-
-    </div>
-    <div class="extra content">
-      <div class="flex-container" style="font-size:0.9em;">
-        <div class="flex-1">
-          {{#if currentUser}}
-            <a id="like_it" href="#">{{likeOrNot}}&nbsp;</a>
-          {{else}}
-            <span id="require_login" data-content="The default theme's basic popup removes the pointing arrow." data-variation="basic">좋아요&nbsp;</span>
-          {{/if}}
-        </div>        
-        <div class="flex-1">
-          {{#if currentUser}}
-            <a href="{{pathFor 'postPage'}}">댓글 달기&nbsp;</a>
-          {{else}}
-            <span id="require_login">댓글 달기&nbsp;</span>
-          {{/if}}
+      <div class="statistic">
+        <div class="value">
+          <i class="plane icon"></i> {{commentsCount}}
         </div>
-        <div class="flex-1">
-          <i class="comment outline icon"></i>{{commentsCount}}&nbsp;
-          <i class="thumbs outline up icon"></i>{{likes}}
+        <div class="label">
+          Flights
         </div>
       </div>
+      <div class="statistic">
+        <div class="value">
+          <i class="plane icon"></i> {{commentsCount}}
+        </div>
+        <div class="label">
+          Flights
+        </div>
+      </div>
+    </div>
+    <div class="ui bottom attached button {{color}}">
+      <i class="food icon"></i>
+        <span id="like_it">{{likeOrNot}}&nbsp;</span>
     </div>
   </div>
 </template>
