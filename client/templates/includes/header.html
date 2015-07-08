@@ -1,43 +1,65 @@
 <template name="header">
-  <nav class="navbar navbar-default" role="navigation">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{{pathFor 'home'}}">걸신이라 불러다오</a>
+  <!--<nav class="container navbar navbar-default" role="navigation">-->
+    <!--<div class="navbar-header">-->
+      <!--<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">-->
+        <!--<span class="sr-only">Toggle navigation</span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+        <!--<span class="icon-bar"></span>-->
+      <!--</button>-->
+      <!--<a class="navbar-brand" href="{{pathFor 'home'}}">걸신이라 불러다오</a>-->
+    <!--</div>-->
+    <!--<div class="collapse navbar-collapse" id="navigation">-->
+      <!--<ul class="nav navbar-nav">-->
+      <!--&lt;!&ndash;   <li class="{{activeRouteClass  'chart'}}">-->
+          <!--<a href="{{pathFor 'chart'}}">걸신 차트</a>-->
+        <!--</li>         &ndash;&gt;-->
+        <!--<li class="{{activeRouteClass 'newPosts'}}">-->
+          <!--<a href="{{pathFor 'newPosts'}}">최신순</a>-->
+        <!--</li>-->
+        <!--<li class="{{activeRouteClass  'bestPosts'}}">-->
+          <!--<a href="{{pathFor 'bestPosts'}}">인기순</a>-->
+        <!--</li>-->
+        <!--{{#if currentUser}}-->
+          <!--<li class="{{activeRouteClass  'favoritePosts'}}">-->
+            <!--<a href="{{pathFor 'favoritePosts'}}">나의 좋아요</a>-->
+          <!--</li>-->
+          <!--<li class="{{activeRouteClass 'postSubmit'}}">-->
+            <!--<a href="{{pathFor 'postSubmit'}}">맛집 등록</a>-->
+          <!--</li>-->
+          <!--<li class="dropdown">-->
+            <!--{{> notifications}}-->
+          <!--</li>-->
+          <!--<li>-->
+            <!--{{> searchbar}}-->
+          <!--</li>          -->
+        <!--{{/if}}-->
+      <!--</ul>-->
+      <!--<ul class="nav navbar-nav navbar-right">-->
+        <!--{{> loginButtons}}-->
+      <!--</ul>-->
+    <!--</div>-->
+  <!--</nav>-->
+
+    <div></div>
+
+    <div class="ui secondary pointing menu">
+        <a class="item" href="{{pathFor 'home'}}">걸신이라 불러다오</a>
+        <a class="item {{activeRouteClass  'newPosts'}}" href="{{pathFor 'newPosts'}}">최신순</a>
+        <a class="item {{activeRouteClass  'bestPosts'}}" href="{{pathFor 'bestPosts'}}">인기순</a>
+        <a class="item {{activeRouteClass  'favoritePosts'}}" href="{{pathFor 'favoritePosts'}}">먹어봤어요</a>
+
+        <div class="right menu">
+            <div class="item">
+                <div class="ui transparent icon input">
+                    <input type="text" placeholder="검색..">
+                    <i class="search link icon"></i>
+                    <!--{{> searchbar}}-->
+                </div>
+            </div>
+            <div class="item">
+                {{> loginButtons}}
+            </div>
+        </div>
     </div>
-    <div class="collapse navbar-collapse" id="navigation">
-      <ul class="nav navbar-nav">
-      <!--   <li class="{{activeRouteClass  'chart'}}">
-          <a href="{{pathFor 'chart'}}">걸신 차트</a>
-        </li>         -->
-        <li class="{{activeRouteClass 'newPosts'}}">
-          <a href="{{pathFor 'newPosts'}}">최신순</a>
-        </li>
-        <li class="{{activeRouteClass  'bestPosts'}}">
-          <a href="{{pathFor 'bestPosts'}}">인기순</a>
-        </li>
-        {{#if currentUser}}
-          <li class="{{activeRouteClass  'favoritePosts'}}">
-            <a href="{{pathFor 'favoritePosts'}}">나의 좋아요</a>
-          </li>
-          <li class="{{activeRouteClass 'postSubmit'}}">
-            <a href="{{pathFor 'postSubmit'}}">맛집 등록</a>
-          </li>
-          <li class="dropdown">
-            {{> notifications}}
-          </li>
-          <li>
-            {{> searchbar}}
-          </li>          
-        {{/if}}
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        {{> loginButtons}}
-      </ul>
-    </div>
-  </nav>
 </template>

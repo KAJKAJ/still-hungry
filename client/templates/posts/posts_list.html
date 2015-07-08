@@ -1,5 +1,5 @@
 <template name="postsList">
-  <div class="page ui three doubling cards">
+  <div class="ui stackable three cards link">
 		{{#each posts}}
   		{{> postItemForList}}
 		{{/each}}
@@ -14,7 +14,7 @@
 </template>
 
 <template name="postItemForList">
-  <div class="card">
+  <div class="card fluid main-card">
     <a class="image image-modified" href="{{pathFor 'postPage'}}">
       <img src="{{imageFirst}}">
     </a>
@@ -24,23 +24,21 @@
       <div class="meta">
         <span class="category">{{location.city}} {{location.division}} {{location.address}}</span>
       </div>
-      <div class="statistic">
-        <div class="value">
-          <i class="plane icon"></i> {{commentsCount}}
-        </div>
-        <div class="label">
-          Flights
-        </div>
-      </div>
-      <div class="statistic">
-        <div class="value">
-          <i class="plane icon"></i> {{commentsCount}}
-        </div>
-        <div class="label">
-          Flights
-        </div>
-      </div>
     </div>
+      <div class="extra content main-card-extra text-center">
+          <div class="flex-container">
+              <div class="statistic flex-1 orange">
+                  <div class="value">
+                      <i class="user icon"></i> {{likes}}
+                  </div>
+              </div>
+              <div class="statistic flex-1">
+                  <div class="value">
+                      <i class="comment icon"></i> {{commentsCount}}
+                  </div>
+              </div>
+          </div>
+      </div>
     <div class="ui bottom attached button {{color}}">
       <i class="food icon"></i>
         <span id="like_it">{{likeOrNot}}&nbsp;</span>

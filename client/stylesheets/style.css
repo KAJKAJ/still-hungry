@@ -177,3 +177,7 @@ body {
 .image-modified {
   max-height: 300px;
 }
+
+.text-center{
+  text-align: center;
+}

@@ -4,7 +4,6 @@
 # but you can also edit it by hand.
 
 standard-app-packages
-twbs:bootstrap
 underscore
 iron:router@1.0.0-rc.1
 sacha:spin
@@ -12,9 +11,7 @@ accounts-password
 audit-argument-checks
 
 msavin:mongol
-semantic:ui
 flemay:less-autoprefixer
-semantic:ui-css
 harrison:babyparse
 manuelschoebel:wait-on-lib
 http
@@ -22,3 +19,6 @@ accounts-base
 accounts-facebook
 ian:accounts-ui-bootstrap-3
 matteodem:easy-search
+semantic:ui
+semantic:ui-css
+twbs:bootstrap
