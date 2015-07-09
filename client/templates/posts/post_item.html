@@ -48,14 +48,17 @@
 
 <template name="postItem">
   <div class="flex-container">
-    <div class="ui flex-2">
+    <div class="ui flex-6">
       <div id="owl-demo" class="owl-carousel owl-theme">
         {{#each images}}
           <div class="item"><img class="ui rounded image" src="{{value}}"/></div>
         {{/each}}
       </div>
     </div>
-    <div class="ui flex-1">
+      <div class="ui flex-1">
+
+      </div>
+    <div class="ui flex-6">
       <div class="flex-container-vertical">
         <div class="ui flex-1">
           <iframe width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/60626244&amp;auto_play=true&amp;show_user=false&amp;show_artwork=false&amp;single_active=true"></iframe>
