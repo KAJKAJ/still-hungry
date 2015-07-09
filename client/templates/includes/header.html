@@ -42,7 +42,7 @@
   <!--</nav>-->
         <div></div>
 
-        <div class="ui secondary pointing menu">
+        <div class="ui secondary pointing menu stackable orange">
             <a class="item" href="{{pathFor 'home'}}">걸신이라 불러다오</a>
             <a class="item {{activeRouteClass  'newPosts'}}" href="{{pathFor 'newPosts'}}">최신순</a>
             <a class="item {{activeRouteClass  'bestPosts'}}" href="{{pathFor 'bestPosts'}}">인기순</a>
@@ -50,17 +50,17 @@
 
             <div class="right menu">
               <div class="item">
-                <div class="dropdown">
-                  {{> notifications}}
-                </div>
-              </div>
-              <div class="item">
                 <div class="ui transparent icon input">
                     <input type="text" placeholder="검색..">
                     <i class="search link icon"></i>
                     <!--{{> searchbar}}-->
                 </div>
               </div>
+                <div class="item">
+                    <div class="dropdown">
+                        {{> notifications}}
+                    </div>
+                </div>
               <div class="item">
                   {{> loginButtons}}
               </div>
