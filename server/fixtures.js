@@ -9,7 +9,6 @@ if (Posts.find().count() === 0) {
     profile: {name: 'youngmin'}
   });
 
-
   var admin = Meteor.users.findOne(adminId);
 
   for(var i=1; i < rows.length; i++ ){
@@ -19,8 +18,10 @@ if (Posts.find().count() === 0) {
 
     if(element[0] !== 'S02E13') continue;
 
-    // title is empty
-    if(element[2] == '') continue;
+    // title or telephone is empty 
+    if(element[2] == '' || element[5] == '' || element[8] == '') continue;
+
+    // if(element[8] !== '02-879-1437') continue;
 
     var restaurant = {
       userId: admin._id,
@@ -53,6 +54,7 @@ if (Posts.find().count() === 0) {
       likeusers: [], likes:0
     };
 
+
     // fetch value added information from daum API
     // image url, location info
     var requestURI = 'https://apis.daum.net/local/v1/search/keyword.json';
@@ -76,14 +78,51 @@ if (Posts.find().count() === 0) {
       var result  = HTTP.call('GET', requestURI_Google, { params: { q: restaurant.tel, v: '1.0'} } );
 
       console.log(result.content);
-      var resultArr = JSON.parse(result.content);
 
-      for(var j=0; j < resultArr.responseData.results.length; j++ ) {
-        if(imageUrls.length > 8) break;
+      if(result.statusCode == 200) {
+        var resultArr = JSON.parse(result.content);
 
-        console.log(resultArr.responseData.results[j].url);
+        for(var j=0; j < resultArr.responseData.results.length; j++ ) {
 
-        imageUrls.push(resultArr.responseData.results[j].url);
+          var requestImageUrl = resultArr.responseData.results[j].url;
+          var imageWidth = parseInt(resultArr.responseData.results[j].width);
+          var imageHeight = parseInt(resultArr.responseData.results[j].height);
+
+          console.log(requestImageUrl);
+          console.log(imageWidth);
+          console.log(imageHeight);
+
+          var idxJPG = requestImageUrl.toUpperCase().lastIndexOf('.JPG');
+          if(idxJPG > 0 &&  ((idxJPG + 4) !== requestImageUrl.length) ) {
+            requestImageUrl = requestImageUrl.substring(0, idxJPG + 4);
+          };
+
+          var idxPNG = requestImageUrl.toUpperCase().lastIndexOf('.PNG');
+          if(idxPNG > 0 && ((idxPNG + 4) !== requestImageUrl.length)) { 
+            requestImageUrl = requestImageUrl.substring(0, idxPNG + 4);
+          };
+
+          console.log('after');
+          console.log(requestImageUrl);
+
+          if( imageWidth > 450 || imageHeight > 450 ) {
+
+            var resultImage = HTTP.call('GET', requestImageUrl );
+            console.log('statusCode');
+            console.log(resultImage.statusCode);
+
+            if(resultImage.statusCode == 200) {
+
+              if(imageUrls.length > 10) break;
+              imageUrls.push(requestImageUrl);
+
+            } else {
+
+              continue;
+            }
+          }
+
+        }
       }
     }
 
