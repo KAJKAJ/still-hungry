@@ -1,4 +1,70 @@
 
+
+function getTrackNo(sc_url, season, episode, episode_sub) {
+
+  console.log('start');
+  console.log(sc_url);
+
+  var endFound = '.json?';
+  var startFound = '/tracks/';
+  var startIdx = 0;
+  var endIndx = 0;
+  var foundFlag = false;
+  var retTrackNo = -1;
+
+  try {
+    
+    var result  = request.sync('http://api.soundcloud.com/resolve.json?url='+sc_url+'&client_id=b1da7c7beea77f9989a6a2d73d889307');
+
+    console.log('statusCode: ' + result.response.statusCode);
+    console.log('path: ' + result.response.request.path);
+
+    if(result.response.statusCode == 200) {
+
+      startIdx = result.response.request.path.indexOf(startFound);
+      endIdx = result.response.request.path.indexOf(endFound);
+
+      console.log('startIdx: ' + startIdx);
+      console.log('endIdx: ' + endIdx);
+
+      // not found
+      if(startIdx == -1 
+        && endIdx == -1
+        && ( sc_url.slice(-'-1'.length) !== '-1' )) {
+
+        console.log('Not Found');
+
+        return getTrackNo(sc_url + '-1', season, episode, episode_sub);
+
+      } else {
+
+        retTrackNo = result.response.request.path.substring(startIdx + 8, endIdx);  
+      }
+
+    } else {
+
+      // not found
+      if( sc_url.slice(-'-1'.length) !== '-1' ) {
+        return getTrackNo(sc_url + '-1', season, episode, episode_sub);
+      }
+
+    }
+
+  } catch (e) {
+
+    console.log('exception');
+    console.log(e);
+
+    // endsWith '-1'
+    if(sc_url.indexOf('-1', sc_url.length - '-1'.length) == -1 ) {
+      return getTrackNo(sc_url + '-1', season, episode, episode_sub);
+    }
+  }
+
+  console.log('track: ' + retTrackNo);
+  return retTrackNo;
+}
+
 // Fixture data 
 if (Posts.find().count() === 0) {
 
@@ -26,7 +92,6 @@ if (Posts.find().count() === 0) {
     // title or telephone is empty 
     if(element[2] == '' || element[5] == '' || element[8] == '') continue;
 
-
     var delimiter1 = element[0].indexOf('Ep.');
     var delimiter2 = element[0].indexOf('-');
     var delimiter3 = element[0].indexOf('S02E');
@@ -37,6 +102,8 @@ if (Posts.find().count() === 0) {
       season = 2;
       episode = parseInt(element[0].substring(4));
 
+      sc_url = 'https://soundcloud.com/ddanzi/gg2-' + episode;
+
     // Season 1
     } else if (delimiter1 >=0 ) {
       season = 1;
@@ -45,23 +112,19 @@ if (Posts.find().count() === 0) {
       if(delimiter4 >=0) {
         episode=0;
         sc_url = 'https://soundcloud.com/ddanzi/gg-p';
-
       } else {
         episode = parseInt(element[0].substring(3, 5));
-
         // sub episode exist
         if(delimiter2 >=0) {
           episode_sub = parseInt(element[0].substring(6, 7));
-          
-          sc_url = 'https://soundcloud.com/ddanzi/gg-' + episode + episode_sub;
-
+          sc_url = 'https://soundcloud.com/ddanzi/gg-' + episode + '-' + episode_sub;
         } else {
           sc_url = 'https://soundcloud.com/ddanzi/gg-' + episode;
         }
-
       }
+    }
 
-    } 
+    var trackNo = getTrackNo(sc_url, season, episode, episode_sub);
 
     var restaurant = {
       userId: admin._id,
@@ -71,9 +134,9 @@ if (Posts.find().count() === 0) {
       episode: episode, // episode 1,2, ... 
       episode_sub: episode_sub, // episode ...
 
-      // sc_url: ,
-      // sc_track_no: ,
-      // sc_time: , 
+      sc_url: sc_url,
+      sc_track_no: trackNo,
+      sc_time: 0, 
 
       part: element[1],
       title: element[2],
@@ -94,7 +157,6 @@ if (Posts.find().count() === 0) {
       upvoters: [], votes: 0,
       likeusers: [], likes:0
     };
-
 
     // fetch value added information from daum API
     // image url, location info
