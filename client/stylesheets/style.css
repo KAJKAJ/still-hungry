@@ -174,3 +174,11 @@ body {
     width: 100%;
     height: 450px;
 }
+
+.full-width{
+  width:100% !important;
+}
+
+.full-height{
+  height:100% !important;
+}
