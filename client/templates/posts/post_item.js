@@ -17,12 +17,14 @@ Template.postItem.helpers({
     }
   },
   images: function() {
-    if (this.imageUrl.length > 0) {
+    if ( this.imageUrl && this.imageUrl.length > 0) {
       var self = this;
       self.imageUrl = self.imageUrl || [];
       return _.map(self.imageUrl, function(value, index){
         return {value: value, index: index};
       });
+    } else { 
+      return [{ index:0, value:'/img/empty_bg.jpg'}];
     }
   },
   likeOrNot: function() {

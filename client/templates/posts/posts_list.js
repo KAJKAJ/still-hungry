@@ -67,7 +67,7 @@ Template.postItemForList.helpers({
     }
   },
   imageFirst: function() {
-    if (this.imageUrl.length > 0) { 
+    if ( this.imageUrl && this.imageUrl.length > 0) { 
       return this.imageUrl[0];
     } else {
       return '/img/empty_bg.jpg';
