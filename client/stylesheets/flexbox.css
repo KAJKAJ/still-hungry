@@ -1,0 +1,62 @@
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-container-vertical {
+    display: flex;
+    flex-direction: column;
+}
+
+.flex-container-responsive{
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+@media screen and (max-width: 900px) {
+    .flex-container-responsive{
+        flex-direction: column;
+    }
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-2 {
+    flex: 2;
+}
+
+.flex-3 {
+    flex: 3;
+}
+
+.flex-4 {
+    flex: 4;
+}
+
+.flex-5 {
+    flex: 5;
+}
+
+.flex-6 {
+    flex: 6;
+}
+
+.flex-7 {
+    flex: 7;
+}
+
+.flex-8 {
+    flex: 8;
+}
+
+.flex-9 {
+    flex: 9;
+}
+
+.flex-10 {
+    flex: 10;
+}
+

@@ -47,15 +47,18 @@
 </template>
 
 <template name="postItem">
-  <div class="flex-container">
-    <div class="ui flex-2">
+  <div class="flex-container-responsive">
+    <div class="ui flex-6">
       <div id="owl-demo" class="owl-carousel owl-theme">
         {{#each images}}
           <div class="item"><img class="ui rounded image" src="{{value}}"/></div>
         {{/each}}
       </div>
     </div>
-    <div class="ui flex-1">
+      <div class="ui flex-1">
+
+      </div>
+    <div class="ui flex-6">
       <div class="flex-container-vertical">
         <div class="ui flex-1">
 <!--           <iframe width="100%" height="100" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/60626244&amp;auto_play=true&amp;show_user=false&amp;show_artwork=false&amp;single_active=true"></iframe>
@@ -100,15 +103,17 @@
                   </div>
               </div>
             </div>
-            <div class="ui bottom attached button {{color}}">
+            <div id="like_it" class="ui bottom attached button {{color}}">
               <i class="food icon"></i>
-                <span id="like_it">{{likeOrNot}}&nbsp;</span>
+                <span>{{likeOrNot}}&nbsp;</span>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+
   <br>
   <div class="ui top attached tabular menu">
     <a class="item active" data-tab="first">정보</a>

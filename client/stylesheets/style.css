@@ -161,24 +161,6 @@ body {
   pointer-events: auto;
 }
 
-.flex-container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.flex-container-vertical {
-  display: flex;
-  flex-direction: column;
-}
-
-.flex-1 {
-  flex: 1;
-}
-
-.flex-2 {
-  flex: 2;
-}
-
 .image-modified {
   max-height: 300px;
 }

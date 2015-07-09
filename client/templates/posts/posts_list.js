@@ -61,7 +61,7 @@ Template.postItemForList.helpers({
   color: function() {
     var userId = Meteor.userId();
     if (userId && !_.include(this.likeusers, userId)) {
-      return 'teal';
+      return 'orange';
     } else {
       return 'grey';
     }
