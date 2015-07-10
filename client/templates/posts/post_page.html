@@ -1,5 +1,5 @@
 <template name="postPage">
-  <div class="post-page page">
+  <div class="post-page">
     {{> postItem}}
     <ul class="comments">
       {{#each comments}}
@@ -9,7 +9,9 @@
       {{#if currentUser}}
         {{> commentSubmit}}
       {{else}}
-      <p>Please log in to leave a comment.</p>
+      <!--<p>Please log in to leave a comment.</p>-->
     {{/if}}
   </div>
+    <br/>
+    <br/>
 </template>

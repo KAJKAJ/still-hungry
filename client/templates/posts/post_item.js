@@ -15,7 +15,46 @@ Template.postItem.helpers({
     } else {
       return 'thumbs up icon';
     }
-  }
+  },
+  images: function() {
+    if ( this.imageUrl && this.imageUrl.length > 0) {
+      var self = this;
+      self.imageUrl = self.imageUrl || [];
+      return _.map(self.imageUrl, function(value, index){
+        return {value: value, index: index};
+      });
+    } else { 
+      return [{ index:0, value:'/img/empty_bg.jpg'}];
+    }
+  },
+  likeOrNot: function() {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.likeusers, userId)) {
+      return '먹어봤어요';
+    } else {
+      return '먹어봤어요 취소';
+    }
+  },
+  color: function() {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.likeusers, userId)) {
+      return 'orange';
+    } else {
+      return 'grey';
+    }
+  },
+  isTrackExist:function(){
+    if(this.sc_track_no == -1) return false;
+    return true;
+  },
+  //isPropertyExist:function(property){
+  //  debugger;
+  //  if(this.hasOwnProperty(property)){
+  //    return true;
+  //  }else {
+  //    return false;
+  //  }
+  //}
 });
 
 Template.postItem.events({
@@ -27,21 +66,7 @@ Template.postItem.events({
     e.preventDefault();
     $(e.target).siblings(".active").removeClass("active");
     $(e.target).addClass('active');
-  }
-});
-
-Template.postItem.helpers({
-  likeOrNot: function() {
-    var userId = Meteor.userId();
-    if (userId && !_.include(this.likeusers, userId)) {
-      return '좋아요';
-    } else {
-      return '좋아요 취소';
-    }
-  }
-});
-
-Template.postItem.events({
+  },
   'click #like_it': function(e) {
     e.preventDefault();
     var userId = Meteor.userId();
@@ -53,8 +78,22 @@ Template.postItem.events({
   }
 });
 
-
 Template.postItem.rendered = function() {
+  $("#owl-demo").owlCarousel({
+ 
+      navigation : true, // Show next and prev buttons
+      slideSpeed : 300,
+      paginationSpeed : 400,
+      singleItem: true,
+ 
+      // "singleItem:true" is a shortcut for:
+      items : 1, 
+      itemsDesktop : false,
+      itemsDesktopSmall : false,
+      itemsTablet: false,
+      itemsMobile : false
+ 
+  });
 
   if (!this.rendered){
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
@@ -76,4 +115,5 @@ Template.postItem.rendered = function() {
     marker.setMap(map);
     // this.rendered = true;
   }
-}
+};
+

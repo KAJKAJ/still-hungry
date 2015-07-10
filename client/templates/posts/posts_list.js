@@ -53,9 +53,24 @@ Template.postItemForList.helpers({
   likeOrNot: function() {
     var userId = Meteor.userId();
     if (userId && !_.include(this.likeusers, userId)) {
-      return '좋아요';
+      return '먹어봤어요';
     } else {
-      return '좋아요 취소';
+      return '먹어봤어요 취소';
+    }
+  },
+  color: function() {
+    var userId = Meteor.userId();
+    if (userId && !_.include(this.likeusers, userId)) {
+      return 'orange';
+    } else {
+      return 'grey';
+    }
+  },
+  imageFirst: function() {
+    if ( this.imageUrl && this.imageUrl.length > 0) { 
+      return this.imageUrl[0];
+    } else {
+      return '/img/empty_bg.jpg';
     }
   }
 });
@@ -69,5 +84,12 @@ Template.postItemForList.events({
     } else {
       return Meteor.call('dislike', this._id);
     }
+  },
+  'mouseover #require_login': function(e) {
+    $('.example .teal.button')
+    .popup({
+      on: 'click'
+    })
   }
 });
+
