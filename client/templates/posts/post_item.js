@@ -43,6 +43,18 @@ Template.postItem.helpers({
       return 'grey';
     }
   },
+  isTrackExist:function(){
+    if(this.sc_track_no == -1) return false;
+    return true;
+  },
+  //isPropertyExist:function(property){
+  //  debugger;
+  //  if(this.hasOwnProperty(property)){
+  //    return true;
+  //  }else {
+  //    return false;
+  //  }
+  //}
 });
 
 Template.postItem.events({
