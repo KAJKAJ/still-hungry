@@ -94,12 +94,13 @@ Template.postItem.rendered = function() {
       itemsMobile : false
  
   });
+  debugger;
 
   if (!this.rendered){
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = { 
-        // center: new daum.maps.LatLng(this.data.location.latitude, this.data.location.longitude), // 지도의 중심좌표
-        center: new daum.maps.LatLng("37.69600304694161", "128.8919231052503"),
+        center: new daum.maps.LatLng(this.data.location.latitude, this.data.location.longitude), // 지도의 중심좌표
+        // center: new daum.maps.LatLng("37.69600304694161", "128.8919231052503"),
         level: 3 // 지도의 확대 레벨
     };
 
