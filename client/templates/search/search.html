@@ -8,7 +8,8 @@
   <div class="ui search flex-container">
     <div class="flex-1"></div>
     <div class="ui icon input flex-8">
-      {{> esInput id="main" index="search_posts" class="prompt searchInput" placeholder="식당, 메뉴, 지역..." }}
+      <!--{{> esInput id="main" index="search_posts" class="prompt searchInput" placeholder="식당, 메뉴, 지역..." allDocsOnEmpty=true}}-->
+        {{> esInput id="main" index="search_posts" class="prompt searchInput" placeholder="식당, 메뉴, 지역..."}}
       <i class="search icon"></i>
     </div>
     <div class="flex-1"></div>
@@ -22,14 +23,13 @@
   </div>
 
     <br/>
-  <div class="search-controls">
-    {{> esLoadMoreButton id="main" class="fluid ui button" index="search_posts" howMany=9}}
-  </div>
-
-
   <!--<div class="search-controls">-->
-    <!--{{> esPagination id="main" index="search_posts" renderControl="<div>haha</div>"}}-->
+    <!--{{> esLoadMoreButton id="main" class="fluid ui button" index="search_posts" howMany=9}}-->
   <!--</div>-->
+
+  <div class="search-controls">
+    {{> esPagination id="main" index="search_posts"}}
+  </div>
 
 
   {{#ifEsHasNoResults id="main" index="search_posts"}}
@@ -39,8 +39,6 @@
   {{#ifEsIsSearching id="main" index="search_posts"}}
     {{> spinner}}
   {{/ifEsIsSearching}}
-</template>
 
-<template name="aaaa">
-   aaaa
+    <br/>
 </template>
