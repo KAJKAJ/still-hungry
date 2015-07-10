@@ -1,5 +1,9 @@
 var instance;
 
+Template.search.rendered = function() {
+  $('.searchInput').focus();
+}
+
 Template.search.created = function () {
   instance = EasySearch.getComponentInstance(
     { id : 'main', index : 'posts' }
