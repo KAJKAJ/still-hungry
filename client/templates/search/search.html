@@ -15,21 +15,22 @@
   </div>
   <br>
     <!-- results -->
-  <div class="ui five doubling cards">
+  <div class="ui stackable three cards link">
     {{#esEach id="main" index="search_posts"}}
       {{> postItemForList}}
     {{/esEach}}
   </div>
 
+    <br/>
   <div class="search-controls">
-    {{> esLoadMoreButton id="main" class="fluid ui button" index="search_posts"}}
+    {{> esLoadMoreButton id="main" class="fluid ui button" index="search_posts" howMany=9}}
   </div>
 
-  <!-- 
-  <div class="search-controls">
-    {{> esPagination id="main" index="search_posts"}}
-  </div> 
-  -->
+
+  <!--<div class="search-controls">-->
+    <!--{{> esPagination id="main" index="search_posts" renderControl="<div>haha</div>"}}-->
+  <!--</div>-->
+
 
   {{#ifEsHasNoResults id="main" index="search_posts"}}
     <div class="no-results">검색 결과가 없습니다</div>
@@ -38,4 +39,8 @@
   {{#ifEsIsSearching id="main" index="search_posts"}}
     {{> spinner}}
   {{/ifEsIsSearching}}
+</template>
+
+<template name="aaaa">
+   aaaa
 </template>
