@@ -1,3 +1,5 @@
 idea
 idea/*
+.idea
+.idea/*
 server/social-config.js
