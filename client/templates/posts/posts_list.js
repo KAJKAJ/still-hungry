@@ -52,18 +52,26 @@ Template.postsList.onRendered(function () {
 Template.postItemForList.helpers({
   likeOrNot: function() {
     var userId = Meteor.userId();
-    if (userId && !_.include(this.likeusers, userId)) {
-      return '먹어봤어요';
+    if (userId) {
+      if(!_.include(this.likeusers, userId)) {
+        return '먹어봤어요';
+      } else {
+        return '먹어봤어요 취소';
+      }
     } else {
-      return '먹어봤어요 취소';
+      return '먹어봤어요';
     }
   },
   color: function() {
     var userId = Meteor.userId();
-    if (userId && !_.include(this.likeusers, userId)) {
-      return 'orange';
+    if (userId) {
+      if(!_.include(this.likeusers, userId)) {
+        return 'orange';
+      } else {
+        return 'grey';
+      }
     } else {
-      return 'grey';
+      return 'orange';
     }
   },
   imageFirst: function() {
