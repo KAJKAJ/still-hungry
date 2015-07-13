@@ -1,0 +1,9 @@
+.post-comments{
+    padding: 0px !important;
+    max-width: unset !important;
+}
+
+.post-comments > .comment.ui.segment{
+    background-color: white;
+    padding:    5px 10px 5px 10px;
+}
