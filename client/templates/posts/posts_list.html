@@ -1,5 +1,5 @@
 <template name="postsList">
-  <div class="page ui four doubling cards">
+  <div class="ui stackable three cards link">
 		{{#each posts}}
   		{{> postItemForList}}
 		{{/each}}
@@ -14,13 +14,9 @@
 </template>
 
 <template name="postItemForList">
-  <div class="ui card">
+  <div class="card fluid main-card">
     <a class="image" href="{{pathFor 'postPage'}}">
-      {{#if imageUrl}}
-        <img src="{{imageUrl}}">
-        {{else}}
-        <img src="/img/empty_bg.jpg">
-      {{/if}}
+      <img src="{{imageFirst}}">
     </a>
     <div class="content">
       <a class="header" href="{{pathFor 'postPage'}}">{{title}}</a>
@@ -28,25 +24,31 @@
       <div class="meta">
         <span class="category">{{location.city}} {{location.division}} {{location.address}}</span>
       </div>
-      <div class="description">
-        <p>{{description}}</p>
-      </div>
     </div>
-    <div class="extra content">
-      <div class="flex-container" style="font-size:0.9em;">
-        <div class="flex-1">
-          <a id="like_it" href="#">{{likeOrNot}}&nbsp;</a>
-        </div>        
-        <div class="flex-1">
-          <a href="{{pathFor 'postPage'}}">댓글 달기&nbsp;</a>
-        </div>
-        <div class="flex-1">
-          <a href="#">
-            <i class="comment outline icon"></i>{{commentsCount}}&nbsp;
-            <i class="thumbs outline up icon"></i>{{likes}}
-          </a>
-        </div>
+      <div class="extra content main-card-extra text-center">
+          <div class="ui two statistics mini">
+              <div class="ui statistic grey">
+                  <div class="text value">
+                      <i class="user icon"></i> {{likes}}
+                  </div>
+                  <!--<div class="label">-->
+                      <!--People-->
+                  <!--</div>-->
+              </div>
+              <div class="statistic grey">
+                  <div class="text value">
+                      <i class="comment icon"></i> {{commentsCount}}
+                  </div>
+                  <!--<div class="label">-->
+                      <!--Comments-->
+                  <!--</div>-->
+              </div>
+          </div>
       </div>
+    <div id="like_it" class="ui bottom attached button {{color}}">
+      <i class="food icon"></i>
+        <span>{{likeOrNot}}&nbsp;</span>
     </div>
   </div>
 </template>
+

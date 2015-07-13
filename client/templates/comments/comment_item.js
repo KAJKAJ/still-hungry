@@ -1,5 +1,10 @@
 Template.commentItem.helpers({
   submittedText: function() {
-    return this.submitted.toString();
+  	if( moment().isSame(moment(this.submitted), 'day')) {
+  		return moment(this.submitted).format('YYYY-MM-DD mm-ss');	
+  	} else {
+  		return moment(this.submitted).format('YYYY-MM-DD mm-ss');	
+  	}
   }
 });
+

@@ -7,6 +7,14 @@ Template.header.helpers({
       return Router.current() && Router.current().route.getName() === name
     });
     
+    //return active && 'active';
     return active && 'active';
+  },
+  profilePicture: function () {
+    if( Meteor.user().profile && Meteor.user().profile.picture) {
+  		return  Meteor.user().profile.picture;
+  	} else {
+  		return '/img/user_male.png';
+  	}
   }
 });

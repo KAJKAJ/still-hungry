@@ -1,15 +1,38 @@
 <template name="postPage">
-  <div class="post-page page">
+  <div class="post-page">
     {{> postItem}}
-    <ul class="comments">
-      {{#each comments}}
-        {{> commentItem}}
-      {{/each}}
-    </ul>
-      {{#if currentUser}}
-        {{> commentSubmit}}
-      {{else}}
-      <p>Please log in to leave a comment.</p>
-    {{/if}}
   </div>
+    {{> mapNComments}}
+    <br/>
+    <br/>
 </template>
+
+<template name="mapNComments">
+
+  <div class="ui top attached tabular menu">
+    <a class="item active" data-tab="first"><i class="map icon"></i>지도
+</a>
+    <a class="item" data-tab="second">
+      <i class="comments outline icon"></i>댓글&nbsp;
+      <button class="circular ui orange icon button">{{commentsCount}}</button>
+    </a>
+  </div>
+<div class="ui bottom attached tab segment active" data-tab="first">
+  <div id="map" class="post-item-map"></div>
+</div>
+<div class="ui bottom attached tab segment" data-tab="second">
+  <ul class="ui comments post-comments">
+    {{#each comments}}
+      {{> commentItem}}
+    {{/each}}
+  </ul>
+  {{#if currentUser}}
+    {{> commentSubmit}}
+  {{else}}
+  <p>가입하시면 댓글을 남길 수 있습니다.</p>
+  {{/if}}
+</div>
+
+</template>
+
+

@@ -1,0 +1,44 @@
+<template name="searchbar">
+    <a href="{{pathFor 'search'}}">
+      <i class="search icon"></i>검색
+    </a>
+</template>
+
+<template name="search">
+  <div class="ui search flex-container">
+    <div class="flex-1"></div>
+    <div class="ui icon input flex-8">
+      <!--{{> esInput id="main" index="search_posts" class="prompt searchInput" placeholder="식당, 메뉴, 지역..." allDocsOnEmpty=true}}-->
+        {{> esInput id="main" index="search_posts" class="prompt searchInput" placeholder="식당, 메뉴, 지역..."}}
+      <i class="search icon"></i>
+    </div>
+    <div class="flex-1"></div>
+  </div>
+  <br>
+    <!-- results -->
+  <div class="ui stackable three cards link">
+    {{#esEach id="main" index="search_posts"}}
+      {{> postItemForList}}
+    {{/esEach}}
+  </div>
+
+    <br/>
+  <!--<div class="search-controls">-->
+    <!--{{> esLoadMoreButton id="main" class="fluid ui button" index="search_posts" howMany=9}}-->
+  <!--</div>-->
+
+  <div class="search-controls">
+    {{> esPagination id="main" index="search_posts"}}
+  </div>
+
+
+  {{#ifEsHasNoResults id="main" index="search_posts"}}
+    <div class="no-results">검색 결과가 없습니다</div>
+  {{/ifEsHasNoResults}}
+
+  {{#ifEsIsSearching id="main" index="search_posts"}}
+    {{> spinner}}
+  {{/ifEsIsSearching}}
+
+    <br/>
+</template>

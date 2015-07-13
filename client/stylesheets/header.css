@@ -1,0 +1,27 @@
+#login-dropdown-list{
+    list-style-type: none;
+    padding-left: 10px;
+}
+
+.menu-icon{
+    width:32px;
+    height:32px;
+}
+
+.main-menu{
+    position:fixed !important;
+    background-color: white !important;
+    top:0px !important;
+    left:0px !important;
+    right:0px !important;
+    z-index:1000 !important;
+    margin: 0px !important;
+}
+
+.main-menu-padding{
+    height: 80px;
+}
+
+.main-menu > a > span.mobile-only{
+    font-size:20px;
+}
