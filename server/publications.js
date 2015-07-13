@@ -25,7 +25,17 @@ Meteor.publish('notifications', function() {
   return Notifications.find({userId: this.userId, read: false});
 });
 
-Meteor.publish('authors', function(userIds) {
-  return Users.find({_id: {$in: userIds}});
-});
+// Meteor.publish('commentAuthors', function(postId) {
+//   console.log(postId);
+//   check(postId, String);
+  
+//   var commentsCursor = Comments.find({postId: postId});
+
+//   if(commentsCursor) {
+//     var userIds = commentsCursor.map(function(p) { return p.userId } );
+//     return Meteor.users.find({_id: {$in: userIds}});
+//   }
+
+//   return {};
+// });
 

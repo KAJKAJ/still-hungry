@@ -1,9 +1,26 @@
 <template name="commentItem">
   <li>
     <h4>
-      <span class="author">{{author}}</span>
+      <span class="author">{{authorNick}}</span>
       <span class="date">on {{submittedText}}</span>
     </h4>
     <p>{{body}}</p>
   </li>
 </template>
+
+<!-- <template name ="commentItem">
+	<li>
+	<div class="comment">
+    <div class="content">
+      <a class="author">{{authorNick}}</a>
+      <div class="metadata">
+        <span class="date">{{submittedText}}</span>
+      </div>
+      <div class="text">
+        {{body}}
+      </div>
+    </div>
+  </div>
+ 	</li>
+</template>
+ -->
