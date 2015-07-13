@@ -16,7 +16,6 @@ harrison:babyparse
 manuelschoebel:wait-on-lib
 http
 accounts-base
-accounts-facebook
 ian:accounts-ui-bootstrap-3
 matteodem:easy-search
 semantic:ui
@@ -24,5 +23,6 @@ semantic:ui-css
 twbs:bootstrap
 richsilv:owl-carousel
 froatsnook:request
-service-configuration
 momentjs:moment
+service-configuration
+accounts-facebook
