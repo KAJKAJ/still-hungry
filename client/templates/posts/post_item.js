@@ -78,10 +78,14 @@ Template.postItem.events({
   'click #like_it': function(e) {
     e.preventDefault();
     var userId = Meteor.userId();
-    if (userId && !_.include(this.likeusers, userId)) {
-      return Meteor.call('like', this._id);
-    } else {
-      return Meteor.call('dislike', this._id);
+    if(userId){
+      if (!_.include(this.likeusers, userId)) {
+        return Meteor.call('like', this._id);
+      } else {
+        return Meteor.call('dislike', this._id);
+      }
+    }else{
+      alert('로그인이 필요합니다.');
     }
   }
 });
