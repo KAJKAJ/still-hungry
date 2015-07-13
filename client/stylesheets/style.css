@@ -182,3 +182,22 @@ body {
 .full-height{
   height:100% !important;
 }
+
+@media screen and (max-width: 900px) {
+  .desktop-only{
+    display:none;
+  }
+  .mobile-only{
+    display:block;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .desktop-only{
+    display:block;
+  }
+  .mobile-only{
+    display:none;
+  }
+}
+
