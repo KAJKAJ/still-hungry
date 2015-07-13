@@ -69,7 +69,7 @@ if (Posts.find().count() === 0) {
     var episode = 0;
     var episode_sub = 0;
 
-    if(element[0] !== 'S02E13') continue;
+    // if(element[0] !== 'S02E13') continue;
 
     // title or telephone is empty 
     if(element[2] == '' || element[5] == '' || element[8] == '') continue;
