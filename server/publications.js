@@ -25,3 +25,7 @@ Meteor.publish('notifications', function() {
   return Notifications.find({userId: this.userId, read: false});
 });
 
+Meteor.publish('authors', function(userIds) {
+  return Users.find({_id: {$in: userIds}});
+});
+
