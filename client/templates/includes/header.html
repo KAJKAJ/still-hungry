@@ -2,30 +2,77 @@
 <template name="header">
   <div></div>
 
-  <div class="ui secondary pointing menu stackable orange">
-      <a class="item" href="{{pathFor 'home'}}">걸신이라 불러다오</a>
-      <a class="item {{activeRouteClass  'newPosts'}}" href="{{pathFor 'newPosts'}}">최신순</a>
-      <a class="item {{activeRouteClass  'bestPosts'}}" href="{{pathFor 'bestPosts'}}">인기순</a>
+  <!--<div class="ui secondary pointing menu stackable orange">-->
+      <!--<a class="item" href="{{pathFor 'home'}}">걸신이라 불러다오</a>-->
+      <!--<a class="item {{activeRouteClass  'newPosts'}}" href="{{pathFor 'newPosts'}}">최신순</a>-->
+      <!--<a class="item {{activeRouteClass  'bestPosts'}}" href="{{pathFor 'bestPosts'}}">인기순</a>-->
 
-      {{#if currentUser}}
-        <a class="item {{activeRouteClass  'favoritePosts'}}" href="{{pathFor 'favoritePosts'}}">먹어봤어요</a>
-      {{/if}}
+      <!--{{#if currentUser}}-->
+        <!--<a class="item {{activeRouteClass  'favoritePosts'}}" href="{{pathFor 'favoritePosts'}}">먹어봤어요</a>-->
+      <!--{{/if}}-->
 
-      <a class="item {{activeRouteClass  'search'}}" href="{{pathFor 'search'}}">검색</a>
+      <!--<a class="item {{activeRouteClass  'search'}}" href="{{pathFor 'search'}}">검색</a>-->
 
-      <div class="right menu">
+      <!--<div class="right menu">-->
+        <!--&lt;!&ndash;<div class="item">&ndash;&gt;-->
+            <!--&lt;!&ndash;<div class="dropdown">&ndash;&gt;-->
+                <!--&lt;!&ndash;{{> notifications}}&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--&lt;!&ndash;</div>  &ndash;&gt;-->
         <!--<div class="item">-->
+          <!--{{#if currentUser}}-->
+          <!--<img class="ui mini circular image" src="{{profilePicture}}"/>-->
+          <!--{{/if}}-->
+          <!--{{> loginButtons}}-->
+        <!--</div>-->
+      <!--</div>-->
+  <!--</div>-->
+
+    <div class="ui secondary pointing menu orange main-menu">
+        <a class="item" href="{{pathFor 'home'}}">
+            <span class="desktop-only">걸신이라 불러다오</span>
+            <span class="mobile-only">
+                <img class="menu-icon" src="/img/empty_bg.jpg"/>
+            </span>
+        </a>
+        <a class="item {{activeRouteClass  'newPosts'}}" href="{{pathFor 'newPosts'}}">
+            <span class="desktop-only">최신순</span>
+            <span class="mobile-only"><i class="wait icon"></i></span>
+        </a>
+        <a class="item {{activeRouteClass  'bestPosts'}}" href="{{pathFor 'bestPosts'}}">
+            <span class="desktop-only">인기순</span>
+            <span class="mobile-only"><i class="thumbs outline up icon"></i></span>
+        </a>
+
+        {{#if currentUser}}
+            <a class="item {{activeRouteClass  'favoritePosts'}}" href="{{pathFor 'favoritePosts'}}">
+                <span class="desktop-only">먹어봤어요</span>
+                <span class="mobile-only"><i class="food icon"></i></span>
+            </a>
+        {{/if}}
+
+        <a class="item {{activeRouteClass  'search'}}" href="{{pathFor 'search'}}">
+            <span class="desktop-only">검색</span>
+            <span class="mobile-only"><i class="search icon"></i></span>
+        </a>
+
+        <div class="right menu">
+            <!--<div class="item">-->
             <!--<div class="dropdown">-->
-                <!--{{> notifications}}-->
+            <!--{{> notifications}}-->
             <!--</div>-->
-        <!--</div>  -->
-        <div class="item">
-          {{#if currentUser}}
-          <img class="ui mini circular image" src="{{profilePicture}}"/>
-          {{/if}}
-          {{> loginButtons}}
+            <!--</div>  -->
+            <div class="item">
+                {{#if currentUser}}
+                    <span class="desktop-only">
+                        <img class="ui mini circular image" src="{{profilePicture}}"/>
+                    </span>
+                {{/if}}
+                {{> loginButtons}}
+            </div>
         </div>
-      </div>
-  </div>
+    </div>
+
+    <div class="main-menu-padding"></div>
 
 </template>
