@@ -191,16 +191,22 @@ if (Posts.find().count() === 0) {
 
           if( imageWidth > 450 || imageHeight > 450 ) {
 
-            var resultImage = HTTP.call('GET', requestImageUrl );
-          
-            if(resultImage.statusCode == null) continue;
+            try {
+              var resultImage = HTTP.call('GET', requestImageUrl );
+              if(resultImage.statusCode == null) continue;
 
-            if(resultImage.statusCode == 200) {
-              if(imageUrls.length > 10) break;
-              imageUrls.push(requestImageUrl);
-            } else {
+              if(resultImage.statusCode == 200) {
+                if(imageUrls.length > 10) break;
+                imageUrls.push(requestImageUrl);
+              } else {
+                continue;
+              }
+            }
+            catch(err) {
+              console.log(err);
               continue;
             }
+          
 
           }
         }
