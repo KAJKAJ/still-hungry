@@ -11,7 +11,7 @@
 .main-menu{
     position:fixed !important;
     background-color: white !important;
-    top:0px !important;
+    top:120px !important;
     left:0px !important;
     right:0px !important;
     z-index:1000 !important;
@@ -19,9 +19,24 @@
 }
 
 .main-menu-padding{
-    height: 80px;
+    height: 200px;
 }
 
 .main-menu > a > span.mobile-only{
     font-size:20px;
+}
+
+.main-logo{
+    position:fixed  !important;
+    background-color: white !important;
+    top:0px !important;
+    left:0px !important;
+    right:0px !important;
+    height:120px !important;
+    text-align:center;
+    z-index:1000 !important;
+}
+
+.main-logo > img{
+    margin-top:10px;
 }
