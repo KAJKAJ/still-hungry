@@ -160,54 +160,57 @@ if (Posts.find().count() === 0) {
 
     if( restaurant.tel ) {
       var requestURI_Google = 'https://ajax.googleapis.com/ajax/services/search/images';
+
       var result  = HTTP.call('GET', requestURI_Google, { params: { q: restaurant.tel, v: '1.0'} } );
 
       if(result.statusCode == 200) {
         var resultArr = JSON.parse(result.content);
 
-        for(var j=0; j < resultArr.responseData.results.length; j++ ) {
+        if(resultArr.responseData) {
+            for(var j=0; j < resultArr.responseData.results.length; j++ ) {
 
-          var requestImageUrl = resultArr.responseData.results[j].url;
-          var imageWidth = parseInt(resultArr.responseData.results[j].width);
-          var imageHeight = parseInt(resultArr.responseData.results[j].height);
+            var requestImageUrl = resultArr.responseData.results[j].url;
+            var imageWidth = parseInt(resultArr.responseData.results[j].width);
+            var imageHeight = parseInt(resultArr.responseData.results[j].height);
 
-          // for skipping exception 
-          var idxKTO = requestImageUrl.toUpperCase().lastIndexOf('.KTO');
-          if(idxKTO > 0 &&  ((idxKTO + 4) !== requestImageUrl.length) ) {
-            requestImageUrl = requestImageUrl.substring(0, idxKTO + 4);
-          };
-          
-          var idxJPG = requestImageUrl.toUpperCase().lastIndexOf('.JPG');
-          if(idxKTO == -1 && idxJPG > 0 &&  ((idxJPG + 4) !== requestImageUrl.length) ) {
-            requestImageUrl = requestImageUrl.substring(0, idxJPG + 4);
-          };
-          
-          var idxPNG = requestImageUrl.toUpperCase().lastIndexOf('.PNG');
-          if(idxPNG > 0 && ((idxPNG + 4) !== requestImageUrl.length)) { 
-            requestImageUrl = requestImageUrl.substring(0, idxPNG + 4);
-          };
+            // for skipping exception 
+            var idxKTO = requestImageUrl.toUpperCase().lastIndexOf('.KTO');
+            if(idxKTO > 0 &&  ((idxKTO + 4) !== requestImageUrl.length) ) {
+              requestImageUrl = requestImageUrl.substring(0, idxKTO + 4);
+            };
+            
+            var idxJPG = requestImageUrl.toUpperCase().lastIndexOf('.JPG');
+            if(idxKTO == -1 && idxJPG > 0 &&  ((idxJPG + 4) !== requestImageUrl.length) ) {
+              requestImageUrl = requestImageUrl.substring(0, idxJPG + 4);
+            };
+            
+            var idxPNG = requestImageUrl.toUpperCase().lastIndexOf('.PNG');
+            if(idxPNG > 0 && ((idxPNG + 4) !== requestImageUrl.length)) { 
+              requestImageUrl = requestImageUrl.substring(0, idxPNG + 4);
+            };
 
-          console.log(requestImageUrl);
+            console.log(requestImageUrl);
 
-          if( imageWidth > 450 || imageHeight > 450 ) {
+            if( imageWidth > 450 || imageHeight > 450 ) {
 
-            try {
-              var resultImage = HTTP.call('GET', requestImageUrl );
-              if(resultImage.statusCode == null) continue;
+              try {
+                var resultImage = HTTP.call('GET', requestImageUrl );
+                if(resultImage.statusCode == null) continue;
 
-              if(resultImage.statusCode == 200) {
-                if(imageUrls.length > 10) break;
-                imageUrls.push(requestImageUrl);
-              } else {
+                if(resultImage.statusCode == 200) {
+                  if(imageUrls.length > 10) break;
+                  imageUrls.push(requestImageUrl);
+                } else {
+                  continue;
+                }
+              }
+              catch(err) {
+                console.log(err);
                 continue;
               }
-            }
-            catch(err) {
-              console.log(err);
-              continue;
-            }
-          
+            
 
+            }
           }
         }
       }
