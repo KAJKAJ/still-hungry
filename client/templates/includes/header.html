@@ -33,6 +33,10 @@
         <a class="item" href="{{pathFor 'home'}}">
             <span class="desktop-only">걸신이라 불러다오</span>
         </a>
+        <a class="item {{activeRouteClass  'map'}}" href="{{pathFor 'map'}}">
+            <span class="desktop-only">지도</span>
+            <span class="mobile-only"><i class="map icon"></i></span>
+        </a>
         <a class="item {{activeRouteClass  'newPosts'}}" href="{{pathFor 'newPosts'}}">
             <span class="desktop-only">최신순</span>
             <span class="mobile-only"><i class="wait icon"></i></span>
